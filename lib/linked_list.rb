@@ -106,7 +106,11 @@ class LinkedList
   end
 
   # remove_at(index) that removes the node at the given index.
-  def remove_at(index)
+  def remove_at(index, count = 0)
+    return self.head = at(1) if index.zero?
+    return at(index - 1).next_node = at(index + 1) if index.eql?(count)
+
+    remove_at(index, count + 1)
   end
   # Extra Credit Tip: When you insert or remove a node, consider how it will affect the existing nodes. Some of the nodes will need their #next_node link updated.
 end
