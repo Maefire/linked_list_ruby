@@ -39,6 +39,7 @@ class LinkedList
 
   # tail returns the last node in the list
   def tail(node = head)
+    return "Error: List is empty" if head.nil?
     return node if last_node?(node)
 
     tail(node.next_node)
@@ -107,7 +108,7 @@ class LinkedList
 
   # remove_at(index) that removes the node at the given index.
   def remove_at(index, count = 0)
-    return self.head = at(1) if index.zero?
+    return self.head = head.next_node if index.zero?
     return at(index - 1).next_node = at(index + 1) if index.eql?(count)
 
     remove_at(index, count + 1)
