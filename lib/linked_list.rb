@@ -21,7 +21,7 @@ class LinkedList
   def prepend(value)
     return start_list(value) if head.nil?
 
-    self.head = new_node(value, head)
+    new_head(value)
   end
 
   # size returns the total number of nodes in the list
@@ -53,7 +53,7 @@ class LinkedList
 
   # at(index) returns the node at the given index
   def at(index, node = head, count = 0)
-    return node.value if index.eql?(count)
+    return node if index.eql?(count)
     return nil if last_node?(node)
 
     at(index, node.next_node, count + 1)
@@ -94,11 +94,15 @@ class LinkedList
   # Extra Credit
   # insert_at(value, index) that inserts a new node with the provided value at the given index.
   def insert_at(value, index, count = 0)
-    # return start_list(value) if head.nil?
+    return new_head(value) if index.zero?
 
-    # return at(index - 1).next_node = new_node(value, at(index)) if index.eql?(count)
+    return at(index - 1).next_node = new_node(value, at(index)) if index.eql?(count)
 
-    # insert_at(value, index, count + 1)
+    insert_at(value, index, count + 1)
+  end
+
+  def new_head(value)
+    self.head = new_node(value, head)
   end
 
   # remove_at(index) that removes the node at the given index.
